@@ -10,7 +10,9 @@
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UIView *signatureView;
+@property (strong, nonatomic) IBOutlet UIView *signatureView1;
 @property (strong, nonatomic) SignatureViewController *signatureController;
+@property (strong, nonatomic) SignatureViewController *signatureController1;
 
 @end
 
@@ -28,6 +30,13 @@
     [self.view insertSubview:self.signatureController.view belowSubview:self.signatureView];
     [self.signatureView removeFromSuperview];
     self.signatureView = self.signatureController.view;
+    
+    self.signatureController1 = [[SignatureViewController alloc] initWithNibName:@"SignatureView" bundle:nil];
+    self.signatureController1.delegate = self;
+    self.signatureController1.view.frame = self.signatureView1.frame;
+    [self.view insertSubview:self.signatureController1.view belowSubview:self.signatureView1];
+    [self.signatureView1 removeFromSuperview];
+    self.signatureView1 = self.signatureController1.view;
 }
 
 - (void)viewDidUnload
